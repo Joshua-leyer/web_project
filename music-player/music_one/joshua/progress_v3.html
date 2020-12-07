@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="contain">
+        <div class="dot-line"></div>
+        <div class="dot" style="width: 20px;"></div>
+    </div>
+    <h3 id='time'></h3>
+</body>
+<style>
+    .contain {
+        height: 100px;
+        width: 300px;
+        border: 1px solid slategrey;
+        position: relative;
+    }
+    .dot {
+        height: 20px;
+
+        background:springgreen;
+        position: absolute;
+
+        left: 30px;
+
+        top: 50%;
+        transform:translateY(-50%);
+    }
+    .dot-line {
+        background: steelblue;
+        position: absolute;
+        height: 20px;
+        width: 100%;
+        top: 50%;
+        transform:translateY(-50%);
+    }
+
+</style>
+<script >
+const log = console.log.bind(console)
+const e = selector => document.querySelector(selector)
+
+var dot = e('.dot')
+var progress = e('.dot-line')
+var time = e('.time')
+
+
+
+function tenDigit(time) {
+    return time<10? '0'+time : time;
+}
+
+
+const changeTime = (nowp, allp) => {
+    let time_span = e('#time')
+
+    //已知道歌曲总时间长度
+    let music_all_time = 424
+    //接受两个参数 , 一个是当前的位置 一个是总位置  。 是数字格式
+    // console.log(nowp, allp)
+    let music_now_time = (nowp / allp) * music_all_time
+
+    let all_minutes = parseInt(music_all_time / 60, 10)
+    let all_seconds = parseInt(music_all_time % 60, 10)
+    let all_time = `${all_minutes}:${all_seconds}`
+
+    let now_seconds = parseInt(music_now_time % 60, 10)
+    let now_minutes = parseInt(music_now_time / 60, 10)
+    let now_time = tenDigit(now_minutes) + ":" + tenDigit(now_seconds)
+
+    time_span.innerHTML = `${now_time} / ${all_time}`    
+    
+}
+ 
+
+
+const changeDot = (x) => {
+    if (x < 0) {
+        x = 0
+    } else if (x > progress.clientWidth - dot.offsetWidth) {
+        x = progress.clientWidth - dot.offsetWidth
+    }
+    dot.style.left = `${x}px`
+}
+
+
+const bindEventMove = (now, all) => {
+    let deltaX = 0
+
+    dot.addEventListener('mousedown', (event) => {
+        // event = event || window.event
+
+        //身体内长度 = 鼠标位置 - 元素左上角位置
+        deltaX = event.clientX - dot.offsetLeft
+        
+        document.onmousemove = function (event) {//拿到全局x、y、
+            // event = event || window.event;
+            let x = event.clientX - deltaX
+            changeDot(x)
+            // line 的长度
+            // 当前位置 x
+            // 需要一个百分比
+            let nowp = x
+            let dot_width =  parseInt(dot.style.width)
+            let allp = progress.clientWidth - dot_width
+            changeTime(nowp, allp)
+        }
+        //处理进度时间问题 , 本来想, 当鼠标移出bar line进度条以后就不让x改变从而不让time改变。
+        //想到另一个方法
+        // progress.onmouseout = function(event) {
+        //     console.log(event)
+        // }  在pregress_V4.html里面写
+
+        document.onmouseup = function(event) {
+            document.onmousemove = null
+        }
+        // box.onmouseup = (event) => {
+        //     document.onmousemove = document.onmouseup = null
+        // }
+
+    })
+
+
+
+}
+bindEventMove()
+
+
+
+const varEventClick = () => {
+    progress.addEventListener('click', (event) => {
+        let self = event.target
+        //点击事件相对于 元素的距离
+        let now_line = event.offsetX
+
+        changeDot()
+    })
+}
+
+
+varEventClick()
+</script>
+</html>

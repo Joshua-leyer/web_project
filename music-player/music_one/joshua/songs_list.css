@@ -1,0 +1,9 @@
+.music-list {
+    position: relative;
+    top: 300px;
+    left: 50px;
+    border: 1px solid salmon;
+}
+.music-list ul {
+    list-style: none;
+}
