@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="min">
+        <div class="min-line"></div>
+        <div class="min-dot"></div>
+        
+    </div>
+</body>
+<style>
+    .min {
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        display: block;
+        left: 50%;
+        transform: translate(-50%);
+        /* height: 140px; */
+        /* width: 30px; */
+        /* overflow:auto ; */
+        bottom: 33%;
+        border: 1px solid springgreen;
+    }
+    .min::after {
+        clear: both
+    }
+    .min-line {
+        position: absolute;
+        height: 144px;
+        width: 10px;
+        border-radius: 8px;
+        background-color:cadetblue;
+        /* position: relative; */
+        display: block;
+        bottom: 0;
+    }
+    .min-dot {
+        position: absolute;
+        height: 32px;
+        width: 32px;
+        bottom: -16px;
+        border-radius: 50%;
+        background-color: saddlebrown;
+        display: block;
+        transform: translate(-10px);
+    }
+</style>
+</html>

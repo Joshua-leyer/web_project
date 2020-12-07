@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="bg">
+        <div class="clock">
+            <div class="sec"></div>
+            <div class="min"></div>
+            <div class="hour"></div>
+            <div class="point"></div>
+            <div class="number">
+            </ul>
+        </div>
+    </div>
+</body>
+<style>
+    .bg {
+        /* position: relative; */
+        height: 400px;
+        width: 400px;
+        border: 1px solid salmon;
+        margin: 0 auto;
+    }
+    .sec {
+        z-index: 4;
+        display: block;
+        position: absolute;
+        height: 10px;
+        width: 10px;
+        border-radius: 50%;
+        left: 50%;
+        top: 136px;
+        transform: translate(-50%, -50%) rotate(30deg);
+        background: white;
+        transform-origin: center 19px;
+
+    }
+    .min {
+        padding: 0;
+        margin: 0;
+        z-index: 2;
+        position: absolute;
+        display: block;
+        height: 165px;
+        width: 28px;
+        left: 50%;
+        transform: translate(-50%) rotate(105deg);
+        bottom: 95px;
+        background: url('source/min3.png');
+        /* background-size: cover ;
+        background-repeat:no-repeat ; */
+        transform-origin: center 111px;
+    }
+    .hour {
+        z-index: -1;
+        padding: 0;
+        margin:0;
+        position: absolute;
+        height: 84px;
+        width: 20px;
+        left:50%;
+        transform-origin: center 100%;
+        transform: translate(-50%) rotate(30deg);
+        background: url('source/hour1.png') no-repeat;
+        bottom: 50%;
+    }
+    .clock {
+        height: 300px;
+        width: 300px;
+        position: relative;
+        border-radius: 50%;
+        border:5px solid black;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* transform: translateX(-50%); */
+
+    }
+    .select{
+        -webkit-user-select:none;
+
+        -moz-user-select:none;
+
+        -ms-user-select:none;
+
+        user-select:none;
+
+    }
+
+    .point {
+        z-index: 3;
+        height: 42px;
+        width: 42px;
+        margin: 0;
+        padding: 0;
+        display: block;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background-color: #3b3b3b;
+        position: absolute;
+        
+    }
+    .number {
+        /* 莫名其妙不在左上角 */
+        margin: 0;
+        padding: 0;
+        /* top: -14px; */
+        position: relative;
+    }
+
+    li {
+        display: inline-block;
+        position: absolute;
+        font-size: 25px;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        text-align: center;
+        left: 50%;
+        transform: translate(-50%);
+        transform-origin: center 150px;
+    }
+    span {
+        /* 元素要旋转就, 对类型有要求 */
+        position: absolute;
+        left: 50%;
+        top: 10%;
+        transform: translate(-50%);
+        display: inline-block;
+        transform-origin: center;
+    }
+
+    .num {
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+    }
+    .num-12 {
+        background-color: #ffc30f;
+    }
+    .num-3 {
+        background-color: #6472bb;
+    }
+    .num-6 {
+        background-color: #f13527;
+    }
+    .num-9 {
+        background-color: #6fbf11;
+    }
+
+</style>
+<script src="02.js"></script>
+</html>

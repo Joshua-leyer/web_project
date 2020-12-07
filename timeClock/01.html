@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="bg">
+        <div class="clock">
+            <ul class="min"></ul>
+            <ul class="hour"></ul>
+            <ul class="point"></ul>
+            <ul class="number">
+                <!-- <li>12</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li> -->
+            </ul>
+        </div>
+    </div>
+</body>
+<style>
+    .bg {
+        /* position: relative; */
+        height: 400px;
+        width: 400px;
+        border: 1px solid salmon;
+        margin: 0 auto;
+    }
+
+
+
+    .clock {
+        height: 300px;
+        width: 300px;
+        position: relative;
+        border-radius: 50%;
+        border:5px solid black;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* transform: translateX(-50%); */
+
+    }
+
+
+    .point {
+        height: 42px;
+        width: 42px;
+        margin: 0;
+        padding: 0;
+        display: block;
+
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background-color: #ccc;
+        position: absolute;
+        
+    }
+    .number {
+        /* 莫名其妙不在左上角 */
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        display: inline-block;
+        position: absolute;
+        border: 1px solid sienna;
+        font-size: 24px;
+        /* margin: 3px; */
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        text-align: center;
+        left: 50%;
+        top: 2%;
+        transform: translate(-50%);
+        transform-origin: center 140px;
+
+        /* transform: rotate(45deg); */
+    }
+
+</style>
+<script src="01.js"></script>
+</html>
