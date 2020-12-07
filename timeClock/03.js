@@ -86,14 +86,14 @@ setInterval(function() {
     $('.min').css("transform", `translate(-50%) rotate(${min_deg}deg)`)
     let hour_deg = ((hour / 12) * 360) + (min_deg / 360) * 30
     $('.hour').css("transform", `translate(-50%) rotate(${hour_deg}deg)`)
-    console.log(time.getHours())
-    if (time.getHours() > 18 && neight == true) {
+
+    if (time.getHours() > 18 && neight == false) {
         addNeight()
-    } else if (time.getHours() > 6 && neight == false) {
+    } else if (time.getHours() > 6 && neight == true) {
         removeNeight()
     }
 
-}, 1000)
+}, 100)
 
 
 

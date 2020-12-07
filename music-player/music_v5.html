@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>V5</title>
+
+	<link rel="stylesheet" href="music_v5.css">
+	<link rel="stylesheet" href="music_v5_self.css">
+</head>
+<body>
+
+
+	<div class="player">
+		<audio id="music-play" src="source/music-list/周杰伦 - 我不配.wav" data-info="周杰伦 - 我不配.wav"></audio>
+
+		<!-- <div class="music-list">
+			<ul>
+				<li data-path="周杰伦 - 我不配.wav" class="song">我不配 - 周杰伦</li>
+				<li data-path="听妈妈的话.mp3" class="song">听妈妈的话</li>
+				<li data-path="菊花台-周杰伦.mp3" class="song">菊花台-周杰伦</li>
+				<li data-path="周杰伦 - Ending.mp3" class="song">周杰伦 - Ending</li>
+				<li data-path="周杰伦 - 简单爱.mp3" class="song">周杰伦 - 简单爱</li>
+			</ul>
+		</div> -->
+
+		<!-- Play 弹出部分 -->
+		<div id="info" class="info">
+			<span class="artist">Flume</span>
+			<span class="name">Say it</span>
+			<div class="progress-bar">
+				<div class="bar"></div>
+				<div class="dot"></div>
+			</div>
+		</div>
+
+		<div id="control-panel" class="control-panel">
+			<div class="album-art"></div>
+			<div class="controls">
+				<div class="prev"></div>
+				<div id="play" class="play"></div>
+				<div class="next"></div>
+			</div>
+		</div>
+	</div>
+
+	<script src="music_v5.js"></script>
+	<script src="music_v5_bar.js"></script>
+</html>

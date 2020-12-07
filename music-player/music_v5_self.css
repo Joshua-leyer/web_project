@@ -1,0 +1,15 @@
+.dot {
+    height: 7px;
+    width: 7px;
+    background:#ff5b1d;
+    border-radius: 50%;
+    top: -3px;
+    position: absolute;
+    left: 0;
+}
+.player .info .progress-bar .bar {
+    position: absolute;
+    height: 2px;
+    background:#e91e63;
+}
+

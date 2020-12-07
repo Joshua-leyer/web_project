@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="contain">
+        <div class="dot-line"></div>
+        <div class="dot"></div>
+    </div>
+</body>
+<style>
+    .contain {
+        height: 100px;
+        width: 300px;
+        border: 1px solid slategrey;
+        position: relative;
+    }
+    .dot {
+        height: 20px;
+        width: 20px;
+        background:springgreen;
+        position: absolute;
+
+        left: 30px;
+
+        top: 50%;
+        transform:translateY(-50%);
+    }
+    .dot-line {
+        background: steelblue;
+        position: absolute;
+        height: 20px;
+        width: 100%;
+        top: 50%;
+        transform:translateY(-50%);
+    }
+
+</style>
+<script >
+    const log = console.log.bind(console)
+    const e = selector => document.querySelector(selector)
+
+
+    const bindEventMove = () => {
+        let dot = e('.dot')
+        let progress = e('.dot-line')
+        let move_stu = false
+
+        let deltaX = 0
+        let deltaY = 0
+
+        dot.addEventListener('mousedown', (event) => {
+            move_stu = true
+            let self = event.target
+            // 我发现个问题,  self.offsetLeft 是相对于offsetParent 的位置 ,姑且理解为父元素的
+            // event.clientX 是相对于浏览器的 , 
+            // 所以用event.offsetX 
+            //offsetX 鼠标点击的位置相对于 dot元素左上角的距离
+            //身体内长度 = 鼠标位置 - 元素左上角位置
+            deltaX = event.clientX - dot.offsetLeft
+            // console.log('鼠标相对浏览器位置 x is :', event.clientX)
+
+        })
+        dot.addEventListener('mousemove', (event) => {
+            let self = event.target
+            if (move_stu) {
+                // console.log('moveing')
+                let x = event.clientX - deltaX
+                // let y = event.clientY - event.offsetX
+                //获取line的长度
+                // console.log('line 的长度', progress.clientWidth)
+                // console.log('dot自身长度是',dot.offsetWidth)
+                //懵逼
+                // console.log('元素的左边距离是', dot.offsetLeft)
+                if (x < 0) {
+                    x = 0
+                } else if (x > progress.clientWidth - dot.offsetWidth) {
+                    x = progress.clientWidth - dot.offsetWidth
+                }
+                // console.log('当前位置', x)
+                
+                self.style.left = `${x}px`;
+            }
+        })
+        
+        dot.addEventListener('mouseup', () => {
+            console.log('stop')
+            move_stu = false
+        })
+
+
+    }
+    bindEventMove()
+
+    
+
+
+    
+</script>
+</html>

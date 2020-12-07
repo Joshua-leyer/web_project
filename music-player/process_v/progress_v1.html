@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    这代码有问题  ， 太乱了。 就新建了一个文件重新来。
+    
+    <div class="contain">
+        <div class="dot-line"></div>
+        <div class="dot"></div>
+    </div>
+</body>
+<style>
+    .contain {
+        height: 100px;
+        width: 300px;
+        border: 1px solid slategrey;
+        position: relative;
+    }
+    .dot {
+        height: 20px;
+        width: 20px;
+        background:springgreen;
+        position: absolute;
+
+        left: 0%;
+
+        top: 50%;
+        transform:translateY(-50%);
+    }
+    .dot-line {
+        background: steelblue;
+        position: absolute;
+        height: 20px;
+        width: 100%;
+        top: 50%;
+        transform:translateY(-50%);
+    }
+
+</style>
+<script >
+    const log = console.log.bind(console)
+    const e = selector => document.querySelector(selector)
+    let dot = e('.dot')
+    let progress = e('.dot-line')
+
+    
+    dot.onmousedown= function(event) {
+        //event.target 可以得到点击对象
+        //想弄明白这个三个的区别
+    /*
+        console.log(event.target)
+        console.log(this)
+        console.log(self)
+    */
+        // 点击物体的 位置
+        let body_x = dot.offsetLeft
+        let body_y = dot.offsetTop
+        let muse_x = event.clientX
+        let muse_y = event.clientY
+
+        //实际位置
+        let x = 
+
+
+        dot.onmousemove = function (event) {
+            let self = event.target
+
+            let nowleft = event.clientX - deltaX
+            // console.log(nowleft)
+            if (nowleft < 0) {
+                nowleft = 0
+            }
+            if (nowleft > progress.clientWidth - dot.offsetWidth) {
+                nowleft = progress.clientWidth - dot.offsetWidth;
+            }
+
+            dot.style.left = nowleft + "%" 
+
+        }
+
+    }
+
+    
+
+
+    
+</script>
+</html>
